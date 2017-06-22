@@ -29,13 +29,13 @@ server.on('connection', (socket) => {
       socket.nickname = data.split('/nick')[1] || socket.nickname;
       socket.nickname = socket.nickname.trim();
       client.nickname = socket.nickname;
-        user.write(`${socket.nickname}: ${content.toString()}`)
+        user.write(`you are now known as ${socket.nickname}\n`);
         return;
       }
         if(data.startsWith('/dm')){
           let content = data.split('/dm ')[1] || '';
           content = content.trim;
-          let to = content.split(' ')[0].trim();
+          let userName = content.split(' ')[0].trim();
           client
           socket.nickname = data.split('/nick')[1] || socket.nickname;
           socket.nickname = socket.nickname.trim();

@@ -11,12 +11,10 @@ let client = function(socket, nickname){
 server.on('connection', (socket) => {
   socket.write('hello socket, welcome to turnchat!/n');
   socket.nickname = client.nickname;
-  console.log('welcome to turnchat');
   clientPool = [...clientPool, socket];
   socket.write('You\'re connected as ${socket.nickname}\n');
 
   let handleDisconnect = () => {
-    console.log(`${socket.nickname} has disconnected`);
     clientPool = clientPool.filter(item => item !== socket);
   };
   socket.on('error', handleDisconnect);
